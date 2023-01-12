@@ -42,7 +42,7 @@ function getCategory(callback){
             "Client" : client
         }
     }
-    fetch("http://dev.thanqminh.com:3000/task_lists", options)
+    fetch("http://dev.thanqminh.com:3001/task_lists", options)
     .then(function(response){
         return data =  response.json()
     })
@@ -83,7 +83,7 @@ function editPost(data, callback) {
     const category_id = localStorage.getItem('category_add')
     const post_id = localStorage.getItem('id_post_edit')
 
-    fetch("http://dev.thanqminh.com:3000/task_lists/" + category_id + "/todos/" + post_id, options)
+    fetch("http://dev.thanqminh.com:3001/task_lists/" + category_id + "/todos/" + post_id, options)
         .then(function (response) {
             alert("Edit post successfully !")
             window.location.reload()

@@ -26,7 +26,7 @@ function signIn(data, callback) {
         },
         body: JSON.stringify(data)
     }
-    fetch("http://dev.thanqminh.com:3000/auth/sign_in", options)
+    fetch("http://dev.thanqminh.com:3001/auth/sign_in", options)
         .then(function (response) {
             var jwtValue = response.headers.get('access-token')
             var uidValue = response.headers.get('uid')

@@ -35,7 +35,7 @@ function getCategory(callback){
             "Client" : client
         }
     }
-    fetch("http://dev.thanqminh.com:3000/task_lists", options)
+    fetch("http://dev.thanqminh.com:3001/task_lists", options)
     .then(function(response){
         return data =  response.json()
     })

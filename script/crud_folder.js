@@ -39,7 +39,7 @@ function getCategory(callback){
             "Client" : client
         }
     }
-    fetch("http://dev.thanqminh.com:3000/task_lists", options)
+    fetch("http://dev.thanqminh.com:3001/task_lists", options)
     .then(function(response){
         return data =  response.json()
     })
@@ -77,7 +77,7 @@ function addCategory(data, callback) {
         },
         body: JSON.stringify(data)
     }
-    fetch("http://dev.thanqminh.com:3000/task_lists", options)
+    fetch("http://dev.thanqminh.com:3001/task_lists", options)
         .then(function (response) {
             alert("Add category successfully !")
             window.location.reload()
@@ -111,7 +111,7 @@ function getCategory(callback){
             "Client" : client
         }
     }
-    fetch("http://dev.thanqminh.com:3000/task_lists", options)
+    fetch("http://dev.thanqminh.com:3001/task_lists", options)
     .then(function(response){
         return data =  response.json()
     })
@@ -172,7 +172,7 @@ function getPost(id, callback){
         }
     }
 
-    fetch("http://dev.thanqminh.com:3000/task_lists/" + id + "/todos", options)
+    fetch("http://dev.thanqminh.com:3001/task_lists/" + id + "/todos", options)
     .then(function(response){
         console.log(123)
         return data =  response.json()
@@ -197,7 +197,7 @@ function deleteCategory(id){
                 "Client" : client
             }
         }
-        fetch("http://dev.thanqminh.com:3000/task_lists/" + id + "/todos/" + post.id, options)
+        fetch("http://dev.thanqminh.com:3001/task_lists/" + id + "/todos/" + post.id, options)
         .then(function(response){
 
         })
@@ -215,7 +215,7 @@ function deleteCategory(id){
             "Client" : client
         }
     }
-    fetch("http://dev.thanqminh.com:3000/task_lists/" + id, options)
+    fetch("http://dev.thanqminh.com:3001/task_lists/" + id, options)
     .then(function(response){
         window.location.reload()
     })
@@ -242,7 +242,7 @@ function editCategory(data, callback) {
         },
         body: JSON.stringify(data)
     }
-    fetch("http://dev.thanqminh.com:3000/task_lists/" + get_category_id, options)
+    fetch("http://dev.thanqminh.com:3001/task_lists/" + get_category_id, options)
         .then(function (response) {
             alert("Edit category successfully !")
             window.location.reload()

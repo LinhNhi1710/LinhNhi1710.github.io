@@ -25,7 +25,7 @@ function createNewUser(data, callback) {
         },
         body: JSON.stringify(data)
     }
-    fetch("http://dev.thanqminh.com:3000/auth", options)
+    fetch("http://dev.thanqminh.com:3001/auth", options)
         .then(function (response) {
             const data = response.json()
             console.log(data)
