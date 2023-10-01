@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #canvas{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="canvas">
+    <canvas id="myCanvas" width="600" height="600"></canvas>
+    <script>
+        var canvas = document.getElementById("myCanvas")
+        var ctx = canvas.getContext("2d");
+        
+        ctx.beginPath();
+        ctx.arc(400, 50, 40, 0, 2 * Math.PI);
+        ctx.fillStyle = "#FF0000";
+        ctx.fill();
+
+        ctx.moveTo(100, 100);
+        ctx.lineTo(255, 100);
+        ctx.lineTo(255, 300);
+        ctx.lineTo(100, 300);
+        ctx.lineTo(100, 100);
+        ctx.fillStyle = "#CCFFFF";
+        ctx.fillRect(100, 100, 155, 200);
+
+        ctx.moveTo(120, 120);
+        ctx.lineTo(160, 120);
+        ctx.lineTo(160, 160);
+        ctx.lineTo(120, 160);
+        ctx.lineTo(120, 120);
+        ctx.fillStyle = "#FFCC99";
+        ctx.fillRect(120, 120, 40, 40);
+
+        ctx.moveTo(200, 120);
+        ctx.lineTo(240, 120);
+        ctx.lineTo(240, 160);
+        ctx.lineTo(200, 160);
+        ctx.lineTo(200, 120);
+        ctx.fillRect(200, 120, 40, 40);
+
+        ctx.moveTo(120, 180);
+        ctx.lineTo(160, 180);
+        ctx.lineTo(160, 220);
+        ctx.lineTo(120, 220);
+        ctx.lineTo(120, 180);
+        ctx.fillRect(120, 180, 40, 40);
+
+        ctx.moveTo(200, 180);
+        ctx.lineTo(240, 180);
+        ctx.lineTo(240, 220);
+        ctx.lineTo(200, 220);
+        ctx.lineTo(200, 180);
+        ctx.fillRect(200, 180, 40, 40);
+
+        ctx.moveTo(150, 230);
+        ctx.lineTo(210, 230);
+        ctx.lineTo(210, 300);
+        ctx.lineTo(150, 300);
+        ctx.lineTo(150, 230);
+        ctx.fillRect(150, 230, 60, 70);
+
+        ctx.moveTo(300, 300);
+        ctx.lineTo(420, 300);
+        ctx.lineTo(420, 200);
+        ctx.lineTo(300, 200);
+        ctx.lineTo(300, 300);
+        ctx.fillStyle = "#FFFF99";
+        ctx.fillRect(300, 200, 120, 100);
+
+        ctx.moveTo(340, 250);
+        ctx.lineTo(380, 250);
+        ctx.lineTo(380, 300);
+        ctx.lineTo(340, 300);
+        ctx.lineTo(340, 250);
+        ctx.fillStyle = "#669966";
+        ctx.fillRect(340, 250, 40, 50);
+    
+        ctx.moveTo(500, 350);
+        ctx.lineTo(50, 350);
+
+        ctx.moveTo(500, 450);
+        ctx.lineTo(50, 450);
+        
+        ctx.moveTo(50, 400);
+        ctx.lineTo(100, 400);
+        ctx.lineTo(100, 410);
+        ctx.lineTo(50, 410);
+        ctx.lineTo(50, 400);
+        ctx.fillStyle = "#9900FF";
+        ctx.fillRect(50, 400, 50, 10);
+        
+
+        ctx.moveTo(150, 400);
+        ctx.lineTo(200, 400);
+        ctx.lineTo(200, 410);
+        ctx.lineTo(150, 410);
+        ctx.lineTo(150, 400);
+        ctx.fillRect(150, 400, 50, 10);
+        
+        ctx.moveTo(250, 400);
+        ctx.lineTo(300, 400);
+        ctx.lineTo(300, 410);
+        ctx.lineTo(250, 410);
+        ctx.lineTo(250, 400);
+        ctx.fillRect(250, 400, 50, 10);
+
+        ctx.moveTo(350, 400);
+        ctx.lineTo(400, 400);
+        ctx.lineTo(400, 410);
+        ctx.lineTo(350, 410);
+        ctx.lineTo(350, 400);
+        ctx.fillRect(350, 400, 50, 10);
+
+        ctx.moveTo(450, 400);
+        ctx.lineTo(500, 400);
+        ctx.lineTo(500, 410);
+        ctx.lineTo(450, 410);
+        ctx.lineTo(450, 400);
+        ctx.fillRect(450, 400, 50, 10);
+        
+        
+        ctx.stroke();
+
+    </script>
+    </div>
+</body>
+</html>
