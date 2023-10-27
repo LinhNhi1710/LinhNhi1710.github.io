@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Short Red Rectangle</title>
+</head>
+
+<body>
+    <canvas id="glCanvas" width="900" height="600"></canvas>
+    <script>
+        const vertexShaderSource = `
+            attribute vec4 coordinates;
+            attribute vec3 color;
+            varying vec3 fragColor;
+
+            void main(void) {
+                gl_PointSize = 10.0; // Set point size
+                gl_Position = coordinates;
+                fragColor = color; // Pass the color to the fragment shader
+            }
+        `;
+
+        const fragmentShaderSource = `
+            precision mediump float;
+            varying vec3 fragColor;
+
+            void main(void) {
+                gl_FragColor = vec4(fragColor, 1.0);
+            }
+        `;
+
+        function initShaderProgram(gl, vsSource, fsSource) {
+            const vertexShader = gl.createShader(gl.VERTEX_SHADER);
+            gl.shaderSource(vertexShader, vsSource);
+            gl.compileShader(vertexShader);
+
+            const fragmentShader = gl.createShader(gl.FRAGMENT_SHADER);
+            gl.shaderSource(fragmentShader, fsSource);
+            gl.compileShader(fragmentShader);
+
+            const shaderProgram = gl.createProgram();
+            gl.attachShader(shaderProgram, vertexShader);
+            gl.attachShader(shaderProgram, fragmentShader);
+            gl.linkProgram(shaderProgram);
+
+            if (!gl.getProgramParameter(shaderProgram, gl.LINK_STATUS)) {
+                console.error('Unable to initialize the shader program: ' + gl.getProgramInfoLog(shaderProgram));
+                return null;
+            }
+
+            return shaderProgram;
+        }
+
+        function main() {
+            const canvas = document.getElementById('glCanvas');
+            const gl = canvas.getContext('webgl');
+
+            if (!gl) {
+                console.error('WebGL not supported, falling back on experimental-webgl');
+                gl = canvas.getContext('experimental-webgl');
+            }
+
+            if (!gl) {
+                alert('Your browser does not support WebGL');
+                return;
+            }
+
+            const shaderProgram = initShaderProgram(gl, vertexShaderSource, fragmentShaderSource);
+            gl.useProgram(shaderProgram);
+
+            const vertices = new Float32Array([
+                -0.3, 0.2, 1.0, 1.0, 1.0, 2.0, 0.0, 0.0,
+                0.3, 0.2, 1.0, 0.0, 0.0, 1.0, 1.0, 0.0,
+                0.3, -0.2, 1.0, 0.0, 0.0, 1.0, 0.0, 0.0,
+                -0.3, -0.2, 1.0, 0.0, 0.0, 1.0, 1.0, 0.0,
+            ]);
+
+            const vertexBuffer = gl.createBuffer();
+            gl.bindBuffer(gl.ARRAY_BUFFER, vertexBuffer);
+            gl.bufferData(gl.ARRAY_BUFFER, vertices, gl.STATIC_DRAW);
+
+            const coords = gl.getAttribLocation(shaderProgram, "coordinates");
+            gl.vertexAttribPointer(coords, 2, gl.FLOAT, false, 32, 0);
+            gl.enableVertexAttribArray(coords);
+
+            const color = gl.getAttribLocation(shaderProgram, "color");
+            gl.vertexAttribPointer(color, 4, gl.FLOAT, false, 32, 8);
+            gl.enableVertexAttribArray(color);
+
+            gl.viewport(0, 0, canvas.width, canvas.height);
+            gl.clearColor(0.0, 0.0, 0.0, 0.1);
+            gl.clear(gl.COLOR_BUFFER_BIT);
+
+            gl.drawArrays(gl.TRIANGLE_FAN, 0, 4); 
+        }
+        main();
+    </script>
+</body>
+
+</html>
